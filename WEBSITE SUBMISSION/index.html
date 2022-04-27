@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <head class="container">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <div>
+        <div class="container-fluid p-5 bg-primary text-white text-center rounded">
+            <h1>"Crime on Rails"</h1>
+            <p>Christian A. Gillies</p>
+            <div class="row">
+              <div class="col">
+                <p>CSci 39542: Introduction to Data Science</p>
+                Department of Computer Science, Hunter College 
+        
+                  
+              </div>
+              <div class="w-100"></div>
+              <div class="col"></div>
+              <div class="col"></div>
+            </div> 
+        </div>
+        <div class="list-group" style="padding-bottom: 2%; padding-top: 2%;">
+          <a href="#" class="list-group-item list-group-item-action active">
+              <b>Resources</b>
+          </a>
+          <a href="https://stjohn.github.io/datasci/spr22/work.html#p10" class="list-group-item list-group-item-action">CSci 39542: Introduction to Data Science's Numerous examples</a>
+          <a href="https://pandas.pydata.org/" class="list-group-item list-group-item-action">Pandas <i>*Used for managing Datasets*</i></a>
+          <a href="https://matplotlib.org/stable/index.html" class="list-group-item list-group-item-action">Matplotlib.org <i>*Used for plotting various graphs*</i></a>
+          <a href="https://scikit-learn.org/stable/" class="list-group-item list-group-item-action">Scikit-learn <i>*Used for modeling*</i></a>
+          <a href="https://geopy.readthedocs.io/en/stable/" class="list-group-item list-group-item-action">Geopy <i>*Used for distance calculations*</i></a>
+        </div>
+      </div>
+      <div class="list-group" style="padding-bottom: 2%; padding-top: 2%;">
+        <a href="#" class="list-group-item list-group-item-action active">
+            <b>Datasets</b>
+        </a>
+        <a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Arrest-Data-Year-to-Date-/uip8-fykc" class="list-group-item list-group-item-action">NYPD-Arrest-Data-Year-to-Date</a>
+        <a href="https://data.cityofnewyork.us/Transportation/Subway-Entrances/drex-xx56" class="list-group-item list-group-item-action">Coordinates for Subway-Entrances in New York city</a>
+        
+      </div>
+      <body  class="container">
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      </body>
+      <div class="media">
+        
+        <div class="media-body">
+          <h5 class="mt-0">Introduction: "Purpose"</h5>
+          <p>
+            My project uses NYC open data's arrest data to attempt to find correlations between arrests and proximity to a given station.
+            I would like to preface my explanation with a few assumptions and limitations
+            As part of my study I calculate the distance between each arrest and each given station. I then sort out arrests that occurred with in 0.5 kilometers of the station.
+            I have picked 0.5kms as the maximum distance to consider when analyzing a station as it is a common standard for acceptable walking distance (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3377942/#:~:text=Background,distance%20in%20U.S.%20research%20studies.">Source</a>). 
+            However, this distance can be modified as needed by altering the following portion of code:
+            <img class="rounded mx-auto d-block" src="images/limit_col.PNG" alt="Generic placeholder image" style="padding: 2%;">
+          </p>
+          <p>
+            The goal of my study was to determine if arrests clustered around train stations. 
+            This was ulimately done through using KMeans clustering to determine the actual center that arrests within 0.5 kms of a station clustered around.
+            To make useful statments about the data, one might expand the region.
+          </p>
+          <img class="rounded mx-auto d-block" src="images/Zerega_Ave_Example Region.PNG" alt="Generic placeholder image" style="padding: 2%;">
+          <p>
+            
+          </p>
+      </div>
+      </div>
+    <div class="bd-example">
+    <!-- Card Text example -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="mt-0">Set Up</h5> 
+        <p class="card-text">
+          
+          All data sets used in this program can be derived from the above listed Datasets. The data explicitly used by the program has been formatted in a number
+          of ways to better work with the program both throughout the programs runtime and in preperation.
+        </p>
+        <ul>
+          <li>The Subway-Entrances dataset has been altered to list the Latitude and Logitude of each station seperately as . It was renamed 'Station_GEODATA.csv'.</li>
+          <li>The NYPD Arrest Data (Year to Date) has recieved 2 for station analysis. These are [Distance_Catagory] and [is_violent]. 
+            The former states what increment of 0.1kms an arrest is in and the latter states if the crime was considered violent.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="media-body" style="padding: 2%;">
+        <h5 >Basic Operation</h5> 
+        <p>
+          
+         The program begins by cleaning and setting up the NYPD Arrest Data (Year to Date) and Subway-Entrances data sets. 
+         It then prompts the user for a station that it has 'DISTANCE_TO' data for. This refers to precalculated distances
+         bettween each arrest and a given station. There are a few provided in the DISTANCE_TO Directory for convience as 
+         running the program to generate them takes about 3 minutes per station. This time will grow with the number of 
+         arrests so it is advised to create these DISTANCE_TO files in advance and treat them as an additional dataset.
+        </p>
+        <p>
+        Assuming the DISTANCE_TO file is generated the appropiate graphs and maps for the station should appear after runtime. 
+        Testing was conducted using Grand Central, Grand Concourse, Franklin Avenue and Zerega stations.
+        </p>
+        <p>
+          
+          3 files are created automatically when this program runs:
+          <ul>
+           <li>The '<i>{Station_Name}_</i>i>Walking_Distance_Crime_Probabilities.csv' file containing all the arrests that were looked at and assigned features.</li>
+           <li>2 versions of the map created with folium (One with the KMEANS centers plotted and one without). On this map purple nodes are arrests for violent crimes, blue nodes are stations and red nodes are arrests for non-violent crimes</li>
+         </ul>
+         </p>
+        <h5 >Modeling</h5> 
+        <p>
+          
+         3 scikit-learn models are fit with this data. They are:
+         <ul>
+          <li>KMEANS</li>
+          <li>Logistic</li>
+          <li>and Random Forests</li>
+        </ul>
+        </p>
+        <h6 >KMEANS Clustering</h6> 
+        <div class="card">
+            <div class="card-body">
+              <p>
+          
+          Kmeans is visualized by plotting the centers on the map of arrests. This is normally ill advised with this algorithm but error caused by euclidean distance
+          should be minimal given the locality of the defualt analysis. This model will grow inaccurate as the distance of analysis is allowed to grow. This is 
+          thus a concern of further expanding the area of analysis by changing the limit.  
+              </p>
+            </div>
+        </div>
+        <figure>
+          <img class="rounded mx-auto d-block" src="images/Grand_Central_KMEANS.PNG" alt="Generic placeholder image" style="padding: 2%; width:90%; height:70%;">
+          <figcaption>Grand Central Station - KMEANS Clustering of arrests in 0.5kms</figcaption>
+        </figure>
+        <p>
+          Its written in the output the discrepency bettween the calculated center and the station. This is relevant to me because my initial question was if crimes could be said to cluster around train stations. 
+          I cannot make a definite statment about this due to numerous local factors that may effect the arrest data.
+    
+        </p>
+        <p>
+          <figure>
+            <img class="rounded mx-auto d-block" src="images/Grand_Central_KMEANS_discrepency.PNG" alt="Generic placeholder image" style="padding: 2%; width:90%; height:70%;">
+          </figure>
+        </p>
+        <p>
+          <figure>
+            <img class="rounded mx-auto d-block" src="images/Zerega_Ave_KMEANS.PNG" alt="Generic placeholder image" style="padding: 2%; width:90%; height:70%;">
+          </figure>
+          <figure>
+            <img class="rounded mx-auto d-block" src="images/Zerega_Ave_KMEANS_discrepency.PNG" alt="Generic placeholder image" style="padding: 2%; width:90%; height:70%;">
+          </figure>
+        </p>     
+      </div>
+      <h6 >Logistic and Random Forests</h6>
+      <p>
+        After being some what unsatified with the utility of my KMEANS model. I included two classfiers in my program. 
+        They both use the same data to try to predict if a crime will be violent given its proximity to the station being analyzed.
+        The scoring for each can be found in the output. 
+      </p>
+      
+      
+    
+</html>
