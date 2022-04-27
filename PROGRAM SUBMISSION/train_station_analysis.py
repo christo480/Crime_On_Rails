@@ -45,6 +45,9 @@ Used https://stackoverflow.com/questions/3964681/find-all-files-in-a-directory-w
 Calculation
 https://www.calculator.net/distance-calculator.html?type=3&la1=38.8976&lo1=-77.0366&la2=39.9496&lo2=-75.1503&ctype=dec&lad1=38&lam1=53&las1=51.36&lau1=n&lod1=77&lom1=2&los1=11.76&lou1=w&lad2=39&lam2=56&las2=58.56&lau2=n&lod2=75&lom2=9&los2=1.08&lou2=w&x=80&y=24#latlog
 https://www.geeksforgeeks.org/get-minimum-values-in-rows-or-columns-with-their-index-position-in-pandas-dataframe/
+
+Title: Crime on Rails
+URL: https://christo480.github.io/DATASCI%20PROJECT/Data_Sci_project.html
 """
 """
 HW 10 SKLEARN DEPENDENCIES:
