@@ -49,7 +49,6 @@ https://www.geeksforgeeks.org/get-minimum-values-in-rows-or-columns-with-their-i
 
 Title: Crime on Rails
 URL: https://christo480.github.io/DATASCI%20PROJECT/Data_Sci_project.html
-
 """
 """
 HW 10 SKLEARN DEPENDENCIES:
